@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initCurrentYear();
   initHashScroll();
   
+  // Initialize header as visible
+  const header = document.querySelector('.header');
+  if (header) {
+    header.classList.add('visible');
+  }
+  
   // Add loaded class to body for any CSS transitions
   document.body.classList.add('loaded');
 });
@@ -158,7 +164,7 @@ function initMobileMenu() {
 }
 
 // ============================================
-// 5. Header Scroll Effect
+// 5. Header Scroll Effect - Hide on scroll down, show on scroll up
 // ============================================
 function initScrollHeader() {
   const header = document.querySelector('.header');
@@ -166,15 +172,32 @@ function initScrollHeader() {
   if (!header) return;
   
   let lastScroll = 0;
+  let isScrollingDown = false;
   
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
+    
+    // Detect scroll direction
+    isScrollingDown = currentScroll > lastScroll;
     
     // Add/remove scrolled class based on scroll position
     if (currentScroll > 50) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
+      header.classList.remove('hidden');
+      header.classList.add('visible');
+    }
+    
+    // Hide header when scrolling down, show when scrolling up
+    if (currentScroll > 100) {
+      if (isScrollingDown) {
+        header.classList.remove('visible');
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+        header.classList.add('visible');
+      }
     }
     
     lastScroll = currentScroll;

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+  <!-- Logo Baracca complet - Maison + Texte -->
+  
+  <!-- Maison -->
+  <g fill="#2D4A3E">
+    <!-- Toit -->
+    <path d="M100 40 L200 40 L150 80 Z"/>
+    
+    <!-- Mur principal -->
+    <rect x="115" y="80" width="70" height="80" rx="3"/>
+    
+    <!-- Porte -->
+    <rect x="135" y="120" width="30" height="40" rx="2"/>
+    <circle cx="150" cy="138" r="2" fill="#1A1A1A"/>
+    
+    <!-- Fenêtre gauche -->
+    <rect x="122" y="95" width="12" height="12" rx="1"/>
+    
+    <!-- Fenêtre droite -->
+    <rect x="166" y="95" width="12" height="12" rx="1"/>
+    
+    <!-- Petite extension sur le toit (cheminée ou style) -->
+    <rect x="145" y="30" width="10" height="25" rx="1"/>
+  </g>
+  
+  <!-- Texte baracca -->
+  <text x="150" y="170" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#2D4A3E" text-anchor="middle" dominant-baseline="middle">baracca</text>
+  
+  <!-- Points décoratifs -->
+  <circle cx="70" cy="165" r="8" fill="#2D4A3E"/>
+  <circle cx="230" cy="165" r="8" fill="#2D4A3E"/>
+</svg>

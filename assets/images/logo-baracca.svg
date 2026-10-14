@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <style>
+    .baracca-logo { fill: #2D4A3E; }
+    .baracca-text { fill: #2D4A3E; font-family: 'Inter', sans-serif; font-weight: 700; }
+    .baracca-door { fill: #4A9B8E; }
+    .baracca-window { fill: #4A9B8E; }
+    .baracca-dot { fill: #2D4A3E; }
+  </style>
+  
+  <!-- Left decorative dot -->
+  <circle class="baracca-dot" cx="20" cy="50" r="10" />
+  
+  <!-- House roof -->
+  <path class="baracca-logo" d="M60 25 L140 25 L100 65 Z" />
+  
+  <!-- House walls -->
+  <rect class="baracca-logo" x="70" y="65" width="60" height="75" rx="2" ry="2" />
+  
+  <!-- Door -->
+  <rect class="baracca-door" x="90" y="105" width="20" height="35" rx="2" ry="2" />
+  <circle class="baracca-logo" cx="100" cy="122" r="2" />
+  
+  <!-- Windows -->
+  <rect class="baracca-window" x="78" y="75" width="12" height="12" rx="1" ry="1" />
+  <rect class="baracca-window" x="110" y="75" width="12" height="12" rx="1" ry="1" />
+  
+  <!-- Text "baracca" -->
+  <text class="baracca-text" x="150" y="90" font-size="52" text-anchor="middle" dominant-baseline="middle">baracca</text>
+  
+  <!-- Right decorative dot -->
+  <circle class="baracca-dot" cx="280" cy="50" r="10" />
+</svg>
