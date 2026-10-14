@@ -1,65 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Baracca - L'habitat mobile, biosourcé et réversible. Modules en ossature bois sur micropieux, analysés via cadastre. Investissez dans l'immobilier innovant.">
-  <meta name="keywords" content="Baracca, habitat mobile, ossature bois, micropieux, cadastre, immobilier, biosourcé, réversible, investissement">
-  <title>Baracca | L'habitat du futur, aujourd'hui</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Baracca - L'habitat mobile, biosourcé et réversible">
-  <meta property="og:description" content="Découvrez les modules Baracca : habitat innovant, écologique et flexible">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/logo-seul.png">
-</head>
-<body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <nav class="nav">
-        <a href="index.html" class="logo">
-          <img src="assets/images/logo-baracca-bandeau.png" alt="Baracca - L'habitat mobile et réversible" class="header-logo">
-        </a>
-        <ul class="nav-links">
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#projet">Le Projet</a></li>
-          <li><a href="#avantages">Avantages</a></li>
-          <li><a href="#processus">Notre Processus</a></li>
-        </ul>
-        <div class="nav-actions">
-          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </nav>
-      
-      <!-- Mobile Menu -->
-      <div class="mobile-menu hidden" id="mobile-menu">
-        <ul>
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#projet">Le Projet</a></li>
-          <li><a href="#avantages">Avantages</a></li>
-          <li><a href="#processus">Notre Processus</a></li>
-        </ul>
-      </div>
-    </div>
-  </header>
+<?php include 'includes/head.html'; ?>
 
   <!-- Logo seul centré en gros -->
   <div class="main-logo-container">
@@ -139,7 +78,7 @@
   </section>
 
   <!-- Avantages Section -->
-  <section id="avantages" class="section section-green-medium">
+  <section id="avantages" class="section">
     <div class="container">
       <div class="section-header fade-inSlow">
         <span class="section-tag">Pourquoi Baracca ?</span>
@@ -207,7 +146,7 @@
   </section>
 
   <!-- Processus Section -->
-  <section id="processus" class="section section-green-dark">
+  <section id="processus" class="section section-green-medium">
     <div class="container">
       <div class="section-header fade-inSlow">
         <span class="section-tag">Notre Processus</span>
@@ -243,89 +182,4 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-main">
-          <div class="footer-menus">
-            <div class="footer-section">
-              <h4>Navigation</h4>
-              <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#projet">Le Projet</a></li>
-                <li><a href="#avantages">Avantages</a></li>
-                <li><a href="#processus">Notre Processus</a></li>
-              </ul>
-            </div>
-            
-            <div class="footer-section">
-              <h4>Ressources</h4>
-              <ul>
-                <li><a href="#">À propos</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Blog</a></li>
-              </ul>
-            </div>
-            
-            <div class="footer-section">
-              <h4>Légal</h4>
-              <ul>
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">CGU</a></li>
-                <li><a href="#politique-donnees">Politique de confidentialité</a></li>
-              </ul>
-            </div>
-            
-            <div class="footer-section footer-newsletter">
-              <form id="footer-newsletter-form" class="footer-newsletter-form" action="mailto:invest@baracca.fr" method="post" enctype="text/plain">
-                <div class="newsletter-input-wrapper">
-                  <input type="email" id="footer-email" name="email" required placeholder="Adresse email">
-                  <button type="submit" class="newsletter-submit">S'inscrire</button>
-                </div>
-                <p class="newsletter-disclaimer">En m'inscrivant, j'accepte la <a href="#politique-donnees">politique de protection des données</a> de Baracca</p>
-                <div class="social-links">
-                  <a href="#" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                      <rect x="2" y="9" width="4" height="12"></rect>
-                      <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                  </a>
-                  <a href="#" aria-label="Twitter">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                    </svg>
-                  </a>
-                  <a href="#" aria-label="Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                  </a>
-                </div>
-              </form>
-            </div>
-        </div>
-        
-        <div class="footer-brand">
-          <a href="index.html" class="footer-logo">
-            <img src="assets/images/logo-baracca-bandeau.png" alt="Baracca" class="footer-logo-img">
-          </a>
-          <p class="footer-tagline">L'habitat mobile, biosourcé et réversible.</p>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>© <span id="current-year"></span> Baracca. Tous droits réservés.</p>
-        <p>Développé avec passion en France</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="assets/js/script.js"></script>
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>

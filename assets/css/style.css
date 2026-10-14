@@ -307,15 +307,15 @@ img, picture, video, canvas, svg {
 /* Main Logo - Large centered logo at top of page */
 .main-logo-container {
   text-align: center;
-  padding: var(--spacing-2xl) 0 var(--spacing-2xl);
+  padding: var(--spacing-3xl) 0 var(--spacing-2xl);
   background-color: var(--white);
 }
 
 .main-logo {
   height: auto;
-  max-height: 250px;
+  max-height: 300px;
   width: auto;
-  max-width: 600px;
+  max-width: 720px;
   margin: 0 auto;
   display: block;
   transition: var(--transition);
@@ -536,8 +536,9 @@ img, picture, video, canvas, svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  border-radius: 0;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
   color: var(--white);
   transition: var(--transition);
 }
@@ -550,7 +551,9 @@ img, picture, video, canvas, svg {
 
 .footer-main .social-links a:hover,
 .footer-newsletter .social-links a:hover {
-  color: var(--primary-light);
+  background-color: transparent !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  opacity: 0.8;
 }
 
 /* SVG Logo styling */
@@ -1323,6 +1326,13 @@ img, picture, video, canvas, svg {
 }
 
 .footer-section h4 {
+  color: var(--white);
+  font-size: var(--font-size-h4);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-section.footer-newsletter .newsletter-intro {
   color: var(--white);
   font-size: var(--font-size-h4);
   font-weight: 600;
@@ -2121,5 +2131,27 @@ img, picture, video, canvas, svg {
   
   .value-card h3 {
     font-size: var(--font-size-h4);
+  }
+
+  /* Newsletter Message Styles */
+  .newsletter-message {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: var(--font-size-body);
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+    box-shadow: var(--box-shadow-md);
+  }
+
+  .newsletter-message-success {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+
+  .newsletter-message-error {
+    background-color: var(--secondary);
+    color: var(--white);
   }
 }
