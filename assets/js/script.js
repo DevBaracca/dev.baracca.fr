@@ -15,12 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCurrentYear();
   initHashScroll();
   
-  // Initialize header as visible
-  const header = document.querySelector('.header');
-  if (header) {
-    header.classList.add('visible');
-  }
-  
   // Add loaded class to body for any CSS transitions
   document.body.classList.add('loaded');
 });
@@ -149,9 +143,11 @@ function initMobileMenu() {
   
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
+    // composedPath() includes the button even if the icon swap detached e.target during this click
+    const path = e.composedPath();
     if (!mobileMenu.classList.contains('hidden') && 
-        !mobileMenuBtn.contains(e.target) && 
-        !mobileMenu.contains(e.target)) {
+        !path.includes(mobileMenuBtn) && 
+        !path.includes(mobileMenu)) {
       mobileMenu.classList.add('hidden');
       const icon = mobileMenuBtn.querySelector('svg');
       icon.innerHTML = `
@@ -172,32 +168,26 @@ function initScrollHeader() {
   if (!header) return;
   
   let lastScroll = 0;
-  let isScrollingDown = false;
   
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
-    // Detect scroll direction
-    isScrollingDown = currentScroll > lastScroll;
     
     // Add/remove scrolled class based on scroll position
     if (currentScroll > 50) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
-      header.classList.remove('hidden');
-      header.classList.add('visible');
     }
     
     // Hide header when scrolling down, show when scrolling up
     if (currentScroll > 100) {
-      if (isScrollingDown) {
-        header.classList.remove('visible');
-        header.classList.add('hidden');
+      if (currentScroll > lastScroll) {
+        header.classList.add('header-hidden');
       } else {
-        header.classList.remove('hidden');
-        header.classList.add('visible');
+        header.classList.remove('header-hidden');
       }
+    } else {
+      header.classList.remove('header-hidden');
     }
     
     lastScroll = currentScroll;
@@ -333,48 +323,8 @@ function initParallax() {
 // initParallax();
 
 // ============================================
-// 12. Form Handling (Contact Form)
+// 12. (Supprimé — remplacé par initContactPageForm en section 19)
 // ============================================
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn ? submitBtn.textContent : 'Envoyer';
-      
-      // Show loading state
-      if (submitBtn) {
-        submitBtn.textContent = 'Envoi en cours...';
-        submitBtn.disabled = true;
-      }
-      
-      // Simulate form submission (replace with actual API call)
-      try {
-        // For Netlify Forms, just submit normally
-        // form.submit();
-        
-        // For demonstration, show success message
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        form.reset();
-        alert('Merci pour votre message ! Nous vous répondrons rapidement.');
-      } catch (error) {
-        alert('Une erreur est survenue. Veuillez réessayer.');
-      } finally {
-        if (submitBtn) {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-        }
-      }
-    });
-  }
-}
-
-// Initialize contact form
-initContactForm();
 
 // ============================================
 // 13. FAQ Accordion
@@ -499,3 +449,92 @@ initLazyLoading();
 console.log('%c Baracca ', 'background: #4A9B8E; color: white; font-size: 20px; padding: 5px;');
 console.log('%c L\'habitat mobile, biosourcé et réversible ', 'color: #4A9B8E; font-size: 14px;');
 console.log('%c Rejoignez la révolution de l\'habitat ! ', 'color: #6B7280; font-size: 12px;');
+
+// ============================================
+// 18. Cookie Consent Banner (RGPD)
+// ============================================
+function initCookieBanner() {
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const refuseBtn = document.getElementById('cookie-refuse');
+
+  if (!banner || !acceptBtn || !refuseBtn) return;
+
+  const COOKIE_KEY = 'baracca_cookie_consent';
+  const storedConsent = localStorage.getItem(COOKIE_KEY);
+
+  // If user has already made a choice, don't show the banner
+  if (storedConsent !== null) {
+    banner.classList.add('hidden');
+    return;
+  }
+
+  // Show the banner after a short delay (let the page render first)
+  setTimeout(() => {
+    banner.classList.remove('hidden');
+  }, 500);
+
+  // Accept all cookies
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem(COOKIE_KEY, 'accepted');
+    hideCookieBanner();
+    // Here you would initialize analytics/tracking scripts if needed
+    // Example: loadAnalytics();
+  });
+
+  // Refuse non-essential cookies
+  refuseBtn.addEventListener('click', () => {
+    localStorage.setItem(COOKIE_KEY, 'refused');
+    hideCookieBanner();
+    // Only strictly necessary cookies remain active
+  });
+
+  function hideCookieBanner() {
+    banner.classList.add('hidden');
+    // Remove from DOM after transition completes
+    setTimeout(() => {
+      if (banner.parentNode) {
+        banner.parentNode.removeChild(banner);
+      }
+    }, 500);
+  }
+
+  // "Gérer les cookies" link in footer — reset consent and reload
+  const cookiePrefsLink = document.getElementById('cookie-preferences-link');
+  if (cookiePrefsLink) {
+    cookiePrefsLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem(COOKIE_KEY);
+      location.reload();
+    });
+  }
+}
+
+// Initialize cookie banner
+initCookieBanner();
+
+// ============================================
+// 19. Contact Form (anti-spam timestamp + UX)
+// ============================================
+function initContactPageForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  // Set timestamp when form loads (anti-spam: server checks elapsed time)
+  const timestampField = document.getElementById('form_timestamp');
+  if (timestampField) {
+    timestampField.value = Math.floor(Date.now() / 1000);
+  }
+
+  // Disable submit button on submit to prevent double-sending
+  const submitBtn = document.getElementById('contact-submit');
+  form.addEventListener('submit', () => {
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours...';
+    }
+  });
+}
+
+// Initialize contact form
+initContactPageForm();

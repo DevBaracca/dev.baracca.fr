@@ -1,4 +1,9 @@
   <!-- Footer -->
+  <?php
+  // Détecte si on est sur la page d'accueil pour générer les bons liens d'ancrage
+  $currentPage = basename($_SERVER['PHP_SELF']);
+  $navPrefix = ($currentPage === 'index.php') ? '' : 'index.php';
+  ?>
   <footer id="footer" class="footer">
     <div class="container">
       <div class="footer-content">
@@ -7,10 +12,10 @@
             <div class="footer-section">
               <h4>Navigation</h4>
               <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#projet">Le Projet</a></li>
-                <li><a href="#avantages">Avantages</a></li>
-                <li><a href="#processus">Notre Processus</a></li>
+                <li><a href="<?php echo $navPrefix; ?>#accueil">Accueil</a></li>
+                <li><a href="<?php echo $navPrefix; ?>#projet">Le Projet</a></li>
+                <li><a href="<?php echo $navPrefix; ?>#avantages">Avantages</a></li>
+                <li><a href="<?php echo $navPrefix; ?>#processus">Notre Processus</a></li>
               </ul>
             </div>
             
@@ -18,7 +23,7 @@
               <h4>Ressources</h4>
               <ul>
                 <li><a href="a-propos.php">À propos</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
                 <li><a href="#">FAQ</a></li>
                 <li><a href="#">Blog</a></li>
               </ul>
@@ -27,9 +32,10 @@
             <div class="footer-section">
               <h4>Légal</h4>
               <ul>
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">CGU</a></li>
-                <li><a href="#politique-donnees">Politique de confidentialité</a></li>
+                <li><a href="mentions-legales.php">Mentions légales</a></li>
+                <li><a href="cgu.php">CGU</a></li>
+                <li><a href="politique-confidentialite.php">Politique de confidentialité</a></li>
+                <li><a href="#" id="cookie-preferences-link">Gérer les cookies</a></li>
               </ul>
             </div>
             
@@ -40,7 +46,7 @@
                   <input type="email" id="footer-email" name="email" required placeholder="Adresse email">
                   <button type="submit" class="newsletter-submit">S'inscrire</button>
                 </div>
-                <p class="newsletter-disclaimer">En m'inscrivant, j'accepte la <a href="#politique-donnees">politique de protection des données</a> de Baracca</p>
+                <p class="newsletter-disclaimer">En m'inscrivant, j'accepte la <a href="politique-confidentialite.php">politique de protection des données</a> de Baracca</p>
                 
                 <!-- Message de confirmation -->
                 <?php if (isset($_GET['newsletter'])): ?>
@@ -91,6 +97,19 @@
       </div>
     </div>
   </footer>
+
+  <!-- Bandeau de consentement aux cookies -->
+  <div id="cookie-banner" class="cookie-banner hidden">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer, vous acceptez notre utilisation des cookies conformément à notre <a href="politique-confidentialite.php">politique de confidentialité</a>.</p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button id="cookie-accept" class="btn btn-primary cookie-btn">Accepter</button>
+        <button id="cookie-refuse" class="btn btn-secondary cookie-btn">Refuser</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="assets/js/script.js"></script>
