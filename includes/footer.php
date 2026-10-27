@@ -25,7 +25,7 @@
                 <li><a href="a-propos.php">À propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="#">FAQ</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="../blog.baracca.fr/index.php">Blog</a></li>
               </ul>
             </div>
             

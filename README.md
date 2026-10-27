@@ -5,7 +5,7 @@ Landing page moderne et responsive pour Baracca - L'habitat mobile, biosourcé e
 ## Structure du projet
 
 ```
-siteweb/
+dev.baracca.fr/
 ├── index.html              # Page d'accueil principale
 ├── README.md               # Documentation
 ├── assets/
@@ -79,14 +79,14 @@ La landing page met en avant la capacité de Baracca à analyser les données ca
 Ouvrez simplement `index.html` dans un navigateur.
 
 ### Déploiement sur un serveur
-Copiez le dossier `siteweb` sur votre serveur web. Assurez-vous que :
+Copiez le dossier `dev.baracca.fr` sur votre serveur web. Assurez-vous que :
 - Le serveur sert les fichiers avec le bon type MIME
 - Les liens sont correctement configurés
 
 ### Déploiement avec Netlify
 1. Créez un nouveau site sur Netlify
 2. Connectez votre dépôt Git
-3. Configurez le dossier de publication comme `siteweb`
+3. Configurez le dossier de publication comme `dev.baracca.fr`
 4. Déployez !
 
 ## Couleurs principales
