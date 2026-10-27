@@ -3,6 +3,11 @@
   // Détecte si on est sur la page d'accueil pour générer les bons liens d'ancrage
   $currentPage = basename($_SERVER['PHP_SELF']);
   $navPrefix = ($currentPage === 'index.php') ? '' : 'index.php';
+  // Lien vers le blog : relatif en local (dossiers frères), URL absolue en ligne
+  $host = (string) ($_SERVER['HTTP_HOST'] ?? '');
+  $blogUrl = (str_starts_with($host, 'localhost') || str_starts_with($host, '127.0.0.1'))
+      ? '../blog.baracca.fr'
+      : 'https://blog.baracca.fr';
   ?>
   <footer id="footer" class="footer">
     <div class="container">
@@ -25,7 +30,7 @@
                 <li><a href="a-propos.php">À propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="#">FAQ</a></li>
-                <li><a href="../blog.baracca.fr/index.php">Blog</a></li>
+                <li><a href="<?= $blogUrl ?>/index.php">Blog</a></li>
               </ul>
             </div>
             
